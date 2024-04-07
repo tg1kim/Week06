@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define	SIZE	10
-#pragma warning (disable: 4326 4996)
+#pragma warning (disable: 4326 4996 6031)
 
 int B[] = {	00,										// 0
 			10,	11,									// 1, 2
@@ -19,23 +19,23 @@ int B[] = {	00,										// 0
 void main()
 {
 	while (1) {
-		int i, j, value;
+		int i, j, nValue;
 		printf("index> ");
 		scanf("%d", &i);
 		if (i < 0)
 			break;
 		scanf("%d", &j);
-		int Aij(int i, int j, int n, int &nValue);
-		if (Aij(i, j, SIZE,  value) == false)
+		int Aij(int i, int j, int nSize, int &nValue);
+		if (Aij(i, j, SIZE, nValue) == false)
 			printf("색인 오류, ....\n");
 		else
-			printf("A[%d][%d] = %d\n", i, j, value);
+			printf("A[%d][%d] = %d\n", i, j, nValue);
 		putchar('\n');
 	}
 	printf("Bye, ....\n\n");
 }
 
-int Aij(int i, int j, int n, int &nValue)
+int Aij(int i, int j, int nSize, int &nValue)
 {	// 적절한 색인이면 nValue에 값을 저장하고 T/F를 return한다.
 	return true;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define	SIZE	10
-#pragma warning (disable: 4326 4996)
+#pragma warning (disable: 4326 4996 6031)
 
 void main()
 {
@@ -31,7 +31,7 @@ void main()
 	printf("Bye, ....\n\n");
 }
 
-int Aij(int A[], int i, int j, int k, int l, int n, int &nValue)
+int Aij(int A[], int i, int j, int k, int l, int nSize, int &nValue)
 {	// 적절한 색인이면 nValue에 값을 저장하고 T/F를 반환한다.
 	return true;
 }

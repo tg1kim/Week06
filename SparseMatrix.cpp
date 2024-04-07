@@ -2,7 +2,7 @@
 
 #define MAX_COL	20
 #define MAX_TERMS MAX_COL+1	/* max number of terms + 1 */
-#pragma warning (disable: 4326 4996)
+#pragma warning (disable: 4326 4996 6031)
 
 typedef struct {
 	int row;
@@ -61,11 +61,11 @@ void main()
 
 void Transpose(Term a[], Term b[])
 {	/* b is set to the transpose of a */
-	int n = a[0].value;			/* total number of elements */
+	int nT = a[0].value;	/* total number of elements */
 	b[0].row = a[0].col;	/* rows in b = columns in a */  
 	b[0].col = a[0].row; 	/* columns in b = rows in a */  
-   	b[0].value = n;    
-	if (n > 0) { 			/* non zero matrix */    
+   	b[0].value = nT;    
+	if (nT > 0) { 			/* non zero matrix */    
 		//
 		// ??????
 		//
@@ -74,14 +74,11 @@ void Transpose(Term a[], Term b[])
 
 void FastTranspose(Term a[], Term b[])
 {	/* the transepose of a is placed in b */ 
-	int nRowCtr[MAX_COL], nStartPos[MAX_COL];
-	int nNoCols = a[0].col, nNoTerms = a[0].value;
-	b[0].row = nNoCols; b[0].col = a[0].row;
-	b[0].value = nNoTerms;
-	if (nNoTerms > 0) {	/* nonzero matrix */
-		// nRowCtr를 초기화
-		for (;;)
-			;
+	int nRowCtr[MAX_COL] = { 0 }, nStartPos[MAX_COL];
+	int nN = a[0].col, nT = a[0].value;
+	b[0].row = nN; b[0].col = a[0].row;
+	b[0].value = nT;
+	if (nT > 0) {	/* nonzero matrix */
 		// 열의 갯수를 센다
 		for (;;)
 			;
@@ -98,13 +95,13 @@ void FastTranspose(Term a[], Term b[])
 
 void PrintSparseMatrix(Term a[])
 {
-	int M = a[0].row;
-	int N = a[0].col;
-	int t = a[0].value;
+	int nM = a[0].row;
+	int nN = a[0].col;
+	int nT = a[0].value;
 	int k = 1, nValue;
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < N; j++) {
-			nValue = (k <= t && i == a[k].row && j == a[k].col) ? a[k++].value : 0;
+	for (int i = 0; i < nM; i++) {
+		for (int j = 0; j < nN; j++) {
+			nValue = (k <= nT && i == a[k].row && j == a[k].col) ? a[k++].value : 0;
 			printf("%4d", nValue);
 		}
 		printf("\n");
